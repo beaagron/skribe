@@ -15,8 +15,8 @@ import ScheduleScreen from './components/AppStack/ScheduleScreen';
 import ClassesScreen from './components/AppStack/ClassesScreen';
 import ProfileScreen from './components/AppStack/ProfileScreen';
 
-import ClassDetail from './components/ClassDetail'
-import ListCard from './components/ListCard'
+import ClassDetail from './components/ClassDetail';
+import TaskDetail from './components/TaskDetail';
 
 import ProfileSettings from './components/ProfileSettings'
 
@@ -51,6 +51,15 @@ const ClassesStack = createStackNavigator({
     }
 })
 
+const ScheduleStack = createStackNavigator({
+    Schedule: {
+        screen: ScheduleScreen
+    },
+    TaskDetail: {
+        screen: TaskDetail
+    }
+})
+
 const ProfileStack = createStackNavigator({
     Profile: {
         screen: ProfileScreen
@@ -62,7 +71,7 @@ const ProfileStack = createStackNavigator({
 
 const AppStack = createBottomTabNavigator({
     Schedule: {
-        screen: ScheduleScreen,
+        screen: ScheduleStack,
         navigationOptions: {
             tabBarLabel: 'Tasks',
             tabBarIcon: ({ tintColor }) => (
