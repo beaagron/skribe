@@ -3,8 +3,11 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity
+    TouchableOpacity,
 } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import TaskButton from './TaskButton'
 
 class TaskCard extends Component {
 
@@ -12,54 +15,66 @@ class TaskCard extends Component {
         const { taskName, classColor } = this.props
         return (
             <View style={styles.container}>
-                <View style={styles.headerContianer}>
-                    <Text style={styles.headerText}>
-                        {taskName}
-                    </Text>
-                </View>
                 <View style={styles.radioButtonContainer}>
-                    <TouchableOpacity style={{
-                        height: 24,
-                        width: 24,
-                        borderRadius: 12,
-                        borderWidth: 2,
-                        borderColor: {classColor},
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}/>
+                    <TaskButton
+                        classColor={classColor}
+                    />
+                    <View style={styles.headerContainer}>
+                        <Text style={styles.headerText}>
+                            {taskName}
+                        </Text>
+                    </View>
+                </View>
+                <View style={styles.editContainer}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            this.props.navigation.navigate('Agenda', {
+                                taskName,
+                                classColor
+                            })
+                        }}
+                    >
+                        <MaterialCommunityIcons name="dots-horizontal" size={30} color="black" />
+                    </TouchableOpacity>
                 </View>
             </View>
         )
     }
 }
 
-export default TaskCard;
+export default withNavigation(TaskCard);
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
-        flex: 1,
-        borderColor: '#ddd',
-        borderBottomWidth: 1,
+        padding: 15,
         backgroundColor: '#fff',
-        justifyContent: 'flex-start',
-        flexDirection: 'column'
+        flexDirection: 'row',
+        alignItems: 'center'
     },
     headerContainer: {
-        alignSelf: 'flex-end',
+        flex: 6,
+        flexDirection: 'row',
+        //backgroundColor: 'yellow',
+    },
+    editContainer: {
+        width: 30,
+        flexDirection: 'row',
+        marginLeft: 10,
+        justifyContent: 'flex-end',
+        //backgroundColor: 'orange'
     },
     headerText: {
         fontFamily: 'Avenir Next',
-        fontSize: 18,
-        fontWeight: '400'
+        fontSize: 17,
+        fontWeight: '600',
+        marginLeft: 7.5
     },
     radioButtonContainer: {
-        alignSelf: 'flex-start',
-    },
-    radioButtonDefault: {
-
-    },
-    radioButtonSelected: {
-        
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        marginLeft: 10,
+        //backgroundColor: 'green'
     }
 })

@@ -5,6 +5,9 @@ import {
     StyleSheet
 } from 'react-native';
 import { Agenda } from 'react-native-calendars';
+import TaskCard from './TaskCard';
+import { Entypo } from '@expo/vector-icons';
+
 
 class AgendaScreen extends Component {
     constructor(props) {
@@ -12,6 +15,7 @@ class AgendaScreen extends Component {
         this.state = {
             items: {}
         };
+        
     }
 
     render() {
@@ -22,26 +26,23 @@ class AgendaScreen extends Component {
                 renderItem={this.renderItem.bind(this)}
                 renderEmptyDate={this.renderEmptyDate.bind(this)}
                 rowHasChanged={this.rowHasChanged.bind(this)}
-            // markingType={'period'}
-            // markedDates={{
-            //    '2017-05-08': {textColor: '#666'},
-            //    '2017-05-09': {textColor: '#666'},
-            //    '2017-05-14': {startingDay: true, endingDay: true, color: 'blue'},
-            //    '2017-05-21': {startingDay: true, color: 'blue'},
-            //    '2017-05-22': {endingDay: true, color: 'gray'},
-            //    '2017-05-24': {startingDay: true, color: 'gray'},
-            //    '2017-05-25': {color: 'gray'},
-            //    '2017-05-26': {endingDay: true, color: 'gray'}}}
-            // monthFormat={'yyyy'}
-            // theme={{calendarBackground: 'red', agendaKnobColor: 'green'}}
-            //renderDay={(day, item) => (<Text>{day ? day.day: 'item'}</Text>)}
+                theme={{
+                    agendaTodayColor: 'red',
+                }}
+                renderKnob={() => {
+                    return (
+                        <View>
+                            <Entypo name="chevron-thin-down" size={15} color="grey" />
+                        </View>
+                    );
+                }}
             />
         );
     }
 
     loadItems(day) {
         setTimeout(() => {
-            for (let i = -15; i < 85; i++) {
+            for (let i = 15; i < 85; i++) {
                 const time = day.timestamp + i * 24 * 60 * 60 * 1000;
                 const strTime = this.timeToString(time);
                 if (!this.state.items[strTime]) {
@@ -49,7 +50,7 @@ class AgendaScreen extends Component {
                     const numItems = Math.floor(Math.random() * 5);
                     for (let j = 0; j < numItems; j++) {
                         this.state.items[strTime].push({
-                            name: 'Item ' + i+j  + ' for ' + strTime,
+                            name: 'Item ' + i + j + ' for ' + strTime,
                             height: Math.max(50, Math.floor(Math.random() * 150))
                         });
                     }
@@ -67,13 +68,20 @@ class AgendaScreen extends Component {
 
     renderItem(item) {
         return (
-            <View style={[styles.item, { height: item.height }]}><Text>{item.name}</Text></View>
+            <View style={[styles.item, { height: item.height }]}>
+                <TaskCard
+                    taskName={item.name}
+                    classColor="#E8384F"
+                />
+            </View>
         );
     }
 
     renderEmptyDate() {
         return (
-            <View style={styles.emptyDate}><Text>Nothing. What's your plan</Text></View>
+            <View style={styles.emptyDate}>
+                <Text>Nothing. What's your plan?</Text>
+            </View>
         );
     }
 
@@ -96,11 +104,17 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 10,
         marginRight: 10,
-        marginTop: 17
+        marginTop: 17,
+        fontFamily: 'Avenir Next'
     },
     emptyDate: {
         height: 15,
         flex: 1,
-        paddingTop: 30
+        paddingTop: 30,
+        fontSize: 17,
+        fontFamily: 'Avenir Next'
+    },
+    calendarText: {
+        fontFamily: 'Avenir Next'
     }
 });

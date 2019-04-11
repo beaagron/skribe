@@ -17,6 +17,8 @@ import ProfileScreen from './components/AppStack/ProfileScreen';
 
 import ClassDetail from './components/ClassDetail';
 import TaskDetail from './components/TaskDetail';
+import AgendaScreen from './components/AgendaScreen';
+import NewTask from './components/NewTask';
 
 import ProfileSettings from './components/ProfileSettings'
 
@@ -57,6 +59,12 @@ const ScheduleStack = createStackNavigator({
     },
     TaskDetail: {
         screen: TaskDetail
+    },
+    Agenda: {
+        screen: AgendaScreen
+    },
+    NewTask: {
+        screen: NewTask
     }
 })
 

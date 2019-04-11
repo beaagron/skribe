@@ -12,22 +12,16 @@ import {
     ScrollView
 } from 'react-native';
 
-class SignUpScreen extends Component {
 
-    static navigationOptions = {
-        header: null
-    }
+class NewTask extends Component {
 
     render() {
-
-        const { navigate } = this.props.navigation;
-
         return (
-            <SafeAreaView style={{ flex: 1 }}>
+            <View>
                 <KeyboardAvoidingView behavior="padding" style={styles.container}>
                     <ScrollView
                         vertical={true}
-                        showsVerticalScrollIndicator = {false}
+                        showsVerticalScrollIndicator={false}
                     >
                         <Text style={styles.text}>
                             Create your account
@@ -95,12 +89,12 @@ class SignUpScreen extends Component {
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>
-            </SafeAreaView>
+            </View>
         )
     }
 }
 
-export default SignUpScreen;
+export default NewTask;
 
 const styles = StyleSheet.create({
     container: {
