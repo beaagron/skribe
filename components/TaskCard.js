@@ -28,7 +28,7 @@ class TaskCard extends Component {
                 <View style={styles.editContainer}>
                     <TouchableOpacity
                         onPress={() => {
-                            this.props.navigation.navigate('Agenda', {
+                            this.props.navigation.navigate('TaskDetail', {
                                 taskName,
                                 classColor
                             })

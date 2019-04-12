@@ -30,6 +30,8 @@ export default class ScheduleScreen extends Component {
 
     render() {
 
+        const { navigate } = this.props.navigation;
+
         return (
             <SafeAreaView style={{ flex: 1 }}>
                 <View
