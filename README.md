@@ -1,4 +1,4 @@
-Changes made:
+Changes made (Updated April 10th):
 
 App.js:
   * Imported the screens that I created (LoginScreen, SplashScreen, SignUpScreen, and WalkthoughScreen)
@@ -28,4 +28,18 @@ ProfileSettings.js:
   * Added a save changes button that navigates back to the ProfileScreen
 
 ScheduleScreen.js:
-  * Currently trying to put together a to do list screen
+  * Includes a search box, and calander strip that sorts the tasks out by day
+  * Holds all the tasks (TaskCard) and a button that navigates to NewTask
+
+TaskCard.js:
+  * Represents a single task in the to do list, including a completion button
+  * Button that navigates to TaskDetail screen
+  
+TaskButton.js:
+  * The functions for a completion button, color changes depending on class that task is under
+  
+TaskDetail.js:
+  * Currently still working on this, but it will include all details of the task
+  
+NewTask.js:
+  * Currently still working on this, but will help create a new task that will be shown in ScheduleScreen
