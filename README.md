@@ -1,4 +1,4 @@
-Changes made (Updated April 10th):
+Changes made (Updated April 12th):
 
 App.js:
   * Imported the screens that I created (LoginScreen, SplashScreen, SignUpScreen, and WalkthoughScreen)
@@ -42,4 +42,5 @@ TaskDetail.js:
   * Currently still working on this, but it will include all details of the task
   
 NewTask.js:
-  * Currently still working on this, but will help create a new task that will be shown in ScheduleScreen
+  * Contains 4 textInput components and an add button that navigates to ScheduleScreen
+  * Exit button at the top to cancel adding task, navigates back to ScheduleScreen
