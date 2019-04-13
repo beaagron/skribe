@@ -25,7 +25,6 @@ export default class ScheduleScreen extends Component {
         this.state = {
             items: {}
         };
-        
     }
 
     render() {

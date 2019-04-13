@@ -9,8 +9,10 @@ import {
     Button,
     KeyboardAvoidingView,
     TextInput,
-    ScrollView
+    ScrollView,
+    Picker
 } from 'react-native';
+import { EvilIcons } from '@expo/vector-icons';
 
 
 class NewTask extends Component {
@@ -20,19 +22,78 @@ class NewTask extends Component {
         header: null
     }
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: {}
+        };
+    }
+
     render() {
+
+        const { navigate } = this.props.navigation;
+
         return (
             <SafeAreaView style={styles.container}>
-                <View style={styles.headerContainer}>
-                    <Text style={styles.text}>What's your plan?</Text>
-                </View>
-                <View style={{paddingVertical: 20}}>
-                    <Text style={styles.inputHeader}></Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Task Name"
-                    />
-                </View>
+                <KeyboardAvoidingView behavior="padding">
+                    <View style={styles.headerContainer}>
+                        <TouchableOpacity
+                            style={styles.closeButton}
+                            onPress={() => navigate('Schedule')}
+                        >
+                            <EvilIcons name="close" size={40} color="grey" />
+                        </TouchableOpacity>
+                        <Text style={styles.text}>What's your plan?</Text>
+                    </View>
+                    <View style={{ marginHorizontal: 20 }}>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Task Name"
+                            placeholderTextColor="grey"
+                            blurOnSubmit={false}
+                            autoFocus={true}
+                        />
+                        {/* change to dropdown menu? */}
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Date"
+                            placeholderTextColor="grey"
+                            blurOnSubmit={false}
+                            autoFocus={true}
+                        />
+                        {/* <Picker
+                            selectedValue={this.state.language}
+                            style={{ height: 50, width: 100 }}
+                        onValueChange={(itemValue, itemIndex) =>
+                            this.setState({ language: itemValue })
+                        }>
+                        <Picker.Item label="Java" value="java" />
+                        <Picker.Item label="JavaScript" value="js" />
+                        </Picker> */}
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Class"
+                            placeholderTextColor="grey"
+                            blurOnSubmit={false}
+                            autoFocus={true}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Notes"
+                            placeholderTextColor="grey"
+                            blurOnSubmit={false}
+                            autoFocus={true}
+                        />
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => navigate('Schedule')}
+                        >
+                            <Text style={styles.buttonText}>ADD</Text>
+                        </TouchableOpacity>
+                    </View>
+                </KeyboardAvoidingView>
             </SafeAreaView>
         )
     }
@@ -42,13 +103,17 @@ export default NewTask;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
         padding: 20
     },
     headerContainer: {
         alignItems: 'center',
-        flexGrow: 1,
         justifyContent: 'center'
+    },
+    closeButton: {
+        marginLeft: 290,
+        paddingTop: 15,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
     },
     text: {
         fontSize: 34,
@@ -60,11 +125,12 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: 40
     },
     button: {
         backgroundColor: '#62BB35',
-        paddingVertical: 15,
+        paddingVertical: 10,
         width: 200,
         borderRadius: 30,
         marginBottom: 40,
@@ -76,10 +142,9 @@ const styles = StyleSheet.create({
     buttonText: {
         textAlign: 'center',
         color: 'white',
-        fontSize: 20,
-        fontFamily: 'Avenir Next',
-        justifyContent: 'center',
-        alignItems: 'center'
+        fontSize: 18,
+        fontWeight: '600',
+        fontFamily: 'Avenir Next'
     },
     inputHeader: {
         color: 'black',
@@ -93,8 +158,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir Next',
         fontWeight: '600',
         fontSize: 20,
-        marginVertical: 10,
-        paddingVertical: 20,
-        color: 'black'
+        marginVertical: 10
     },
 })
