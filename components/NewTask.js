@@ -10,7 +10,6 @@ import {
     KeyboardAvoidingView,
     TextInput,
     ScrollView,
-    Picker
 } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
 
@@ -27,6 +26,9 @@ class NewTask extends Component {
         this.state = {
             items: {}
         };
+        this.state = {
+            PickerSelectedVal: 'Which class?'
+        }
     }
 
     render() {
@@ -45,7 +47,7 @@ class NewTask extends Component {
                         </TouchableOpacity>
                         <Text style={styles.text}>What's your plan?</Text>
                     </View>
-                    <View style={{ marginHorizontal: 20 }}>
+                    <View style={{ marginHorizontal: 20}}>
                         <TextInput
                             style={styles.input}
                             placeholder="Task Name"
@@ -61,15 +63,6 @@ class NewTask extends Component {
                             blurOnSubmit={false}
                             autoFocus={true}
                         />
-                        {/* <Picker
-                            selectedValue={this.state.language}
-                            style={{ height: 50, width: 100 }}
-                        onValueChange={(itemValue, itemIndex) =>
-                            this.setState({ language: itemValue })
-                        }>
-                        <Picker.Item label="Java" value="java" />
-                        <Picker.Item label="JavaScript" value="js" />
-                        </Picker> */}
                         <TextInput
                             style={styles.input}
                             placeholder="Class"

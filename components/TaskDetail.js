@@ -8,7 +8,7 @@ import {
      TouchableOpacity
 } from 'react-native';
 
-import { Feather } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 class TaskDetail extends Component {
 
@@ -17,18 +17,20 @@ class TaskDetail extends Component {
              title: navigation.getParam('taskName', ''),
              headerRight: (
                   <TouchableOpacity
-                       style={{paddingRight: 10}}
+                       style={{paddingRight: 15, alignItems: 'center'}}
                   >
-                       <Feather name="edit-2" color='#007AFF' size={28}/>
+                       <Entypo name="dots-three-horizontal" color='#007AFF' size={20}/>
                   </TouchableOpacity>
              )
         }
    }
 
     render () {
+        const { taskName, classColor } = this.props
         return (
             <View style={styles.container}>
-                <Text> test</Text>
+                <Text style={styles.headerText}>Class:</Text>
+                <Text style={styles.headerText}>Notes:</Text>
             </View>
         )
     }
@@ -39,5 +41,12 @@ export default TaskDetail;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        paddingHorizontal: 20
     },
+    headerText: {
+        marginTop: 25,
+        fontFamily: 'Avenir Next',
+        fontWeight: '600',
+        fontSize: 26
+    }
 })

@@ -54,11 +54,13 @@ class ClassesScreen extends Component {
 						<Text style={styles.name}>Huy Pham</Text>
 						<Text style={styles.title}>@huypham50</Text>
 					</View>
-					<TouchableOpacity
-						style={styles.button}
-						onPress={() => navigate('Login')}>
-						<Text style={styles.buttonText}>Log Out</Text>
-					</TouchableOpacity>
+					<View style={{ marginTop: 30 }}>
+						<TouchableOpacity
+							style={styles.button}
+							onPress={() => navigate('Login')}>
+							<Text style={styles.buttonText}>Log Out</Text>
+						</TouchableOpacity>
+					</View>
 
 					{/* <Text style={styles.subTitle}>
                          Your classes
@@ -143,17 +145,21 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 	},
 	button: {
-		backgroundColor: '#FD612C',
-		paddingVertical: 15,
-		width: '100%',
-		justifyContent: 'center',
+		backgroundColor: '#E8384F',
+		marginLeft: 5,
+		marginRight: 5,
+		borderRadius: 20,
+		marginBottom: 10,
+		paddingHorizontal: 20,
+		height: 40,
 		alignItems: 'center',
-		marginTop: 20
+		justifyContent: 'center'
 	},
 	buttonText: {
 		textAlign: 'center',
 		color: 'white',
 		fontSize: 20,
-		fontFamily: 'Avenir Next'
+		fontFamily: 'Avenir Next',
+		fontWeight: '500'
 	}
 });
