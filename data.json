@@ -1,0 +1,83 @@
+[
+    {
+        "id": 0,
+        "name": "MATH2417",
+        "desc": "Calculus 1",
+        "color": "green",
+        "folders": [
+            {
+                "id": 0,
+                "folderName": "Week 1",
+                "files": [
+                    {
+                        "id": 0,
+                        "title": "Some title",
+                        "desc": "Some desc",
+                        "image": "return the image file",
+                        "tags": [
+                            "some", "tags", "for", "file"
+                        ]
+                    }
+                ]
+            }, {
+                "id": 1,
+                "folderName": "Week 2",
+                "files": [
+                    {
+                        "id": 1,
+                        "title": "Some title",
+                        "desc": "Some desc",
+                        "image": "return the image file",
+                        "tags": [
+                            "this", "is", "week", "2"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }, {
+        "id": 1,
+        "name": "PHIL1301",
+        "desc": "Introduction to Philosophy",
+        "color": "red",
+        "folders": [
+            {
+                "id": 0,
+                "folderName": "Week 1",
+                "files": [
+                    {
+                        "id": 0,
+                        "title": "Some title",
+                        "desc": "Some desc",
+                        "image": "return the image file",
+                        "tags": [
+                            "decartes", "kant", "lenin", "marx"
+                        ]
+                    }, {
+                        "id": 1,
+                        "title": "Some title",
+                        "desc": "Some desc",
+                        "image": "return the image file",
+                        "tags": [
+                            "decartes", "kant", "lenin", "marx"
+                        ]
+                    }
+                ]
+            }, {
+                "id": 1,
+                "folderName": "Week 2",
+                "files": [
+                    {
+                        "id": 1,
+                        "title": "Some title",
+                        "desc": "Some desc",
+                        "image": "return the image file",
+                        "tags": [
+                            "this", "is", "week", "2"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
