@@ -1,4 +1,4 @@
-Changes made (Updated April 12th):
+Changes made (Updated April 14th):
 
 App.js:
   * Imported the screens that I created (LoginScreen, SplashScreen, SignUpScreen, and WalkthoughScreen)
@@ -23,9 +23,12 @@ WalkthroughScreen.js:
   
 ProfileScreen.js:
   * Added a log out button that navigates to LoginScreen
+  * Changed the button to match the rest of the buttons
 
 ProfileSettings.js:
   * Added a save changes button that navigates back to the ProfileScreen
+  * Three textInput components for name, username, and email
+  * Profile picture, thinking of linking it to photos app for editing purposes?
 
 ScheduleScreen.js:
   * Includes a search box, and calander strip that sorts the tasks out by day
@@ -39,7 +42,7 @@ TaskButton.js:
   * The functions for a completion button, color changes depending on class that task is under
   
 TaskDetail.js:
-  * Currently still working on this, but it will include all details of the task
+  * Contains basic components that will be used to keep track of each tasks details (which class it belongs to, notes)
   
 NewTask.js:
   * Contains 4 textInput components and an add button that navigates to ScheduleScreen
