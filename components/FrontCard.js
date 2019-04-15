@@ -14,14 +14,14 @@ const _borderRadius = 8
 const _width = Dimensions.get('window').width - _margin * 2
 const _height = 70
 
-class ListCard extends Component {
+class FrontCard extends Component {
     render() {
-        const { title, color, desc } = this.props
+        const { title, color, desc, destination } = this.props
         return (
             <TouchableOpacity
                 style={[styles.container, { backgroundColor: color }]}
                 onPress={() => {
-                    this.props.navigation.navigate('Class', {
+                    this.props.navigation.navigate(destination, {
                         title,
                         color,
                         desc,
@@ -37,7 +37,7 @@ class ListCard extends Component {
     }
 }
 
-export default withNavigation(ListCard)
+export default withNavigation(FrontCard)
 
 const styles = StyleSheet.create({
     container: {

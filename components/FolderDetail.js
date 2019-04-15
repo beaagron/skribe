@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {
     FlatList,
-    SectionList,
     StyleSheet,
     Text,
     TextInput,
@@ -11,7 +10,7 @@ import {
 
 import { Ionicons } from '@expo/vector-icons'
 
-class ClassDetail extends Component {
+class FolderDetail extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
             title: navigation.getParam('title', ''),
@@ -122,7 +121,7 @@ class ClassDetail extends Component {
     }
 }
 
-export default ClassDetail
+export default FolderDetail;
 
 const styles = StyleSheet.create({
     container: {

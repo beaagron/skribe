@@ -2,6 +2,9 @@ import React from 'react';
 import {
     TouchableOpacity
 } from 'react-native';
+import {
+    Animated, Easing
+} from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 
 import {
@@ -15,7 +18,12 @@ import ScheduleScreen from './components/AppStack/ScheduleScreen';
 import ClassesScreen from './components/AppStack/ClassesScreen';
 import ProfileScreen from './components/AppStack/ProfileScreen';
 
-import ClassDetail from './components/ClassDetail';
+import PhotoScreen from './components/PhotoScreen'
+import Camera from './components/Camera'
+
+import NewClass from './components/NewClass'
+import ClassDetail from './components/ClassDetail'
+import FolderDetail from './components/FolderDetail'
 import TaskDetail from './components/TaskDetail';
 import AgendaScreen from './components/AgendaScreen';
 import NewTask from './components/NewTask';
@@ -45,14 +53,14 @@ const AuthStack = createStackNavigator({
         initialRouteName: 'Login'
     })
 
-const ClassesStack = createStackNavigator({
-    Classes: {
-        screen: ClassesScreen
-    },
-    Detail: {
-        screen: ClassDetail
-    }
-})
+// const ClassesStack = createStackNavigator({
+//     Classes: {
+//         screen: ClassesScreen
+//     },
+//     Detail: {
+//         screen: ClassDetail
+//     }
+// })
 
 const ScheduleStack = createStackNavigator({
     Schedule: {
@@ -69,27 +77,66 @@ const ScheduleStack = createStackNavigator({
     },
     EditTaskDetail: {
         screen: EditTaskDetail
+    },
+    Camera: {
+        //screen: CameraScreen,
+        screen: Camera,
+        navigationOptions: {
+            header: null,
+        },
+    },
+    Photo: {
+        screen: PhotoScreen,
+    },
+})
+
+ScheduleStack.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true
+    if (navigation.state.index == 1 || navigation.state.index == 2) {
+        tabBarVisible = false
+    }
+
+    return {
+        tabBarVisible,
+    }
+}
+
+const ClassesStack = createStackNavigator({
+    Classes: {
+        screen: ClassesScreen,
+    },
+    Class: {
+        screen: ClassDetail,
+    },
+    Folder: {
+        screen: FolderDetail,
+    },
+    NewClass: {
+        screen: NewClass,
+        navigationOptions: {
+            mode: 'modal'
+        }
     }
 })
 
 const ProfileStack = createStackNavigator({
     Profile: {
-        screen: ProfileScreen
+        screen: ProfileScreen,
     },
     Settings: {
-        screen: ProfileSettings
-    }
+        screen: ProfileSettings,
+    },
 })
 
 const AppStack = createBottomTabNavigator({
     Schedule: {
         screen: ScheduleStack,
         navigationOptions: {
-            tabBarLabel: 'Tasks',
+            tabBarLabel: 'To Do',
             tabBarIcon: ({ tintColor }) => (
                 <Ionicons name="md-calendar" color={tintColor} size={24} />
-            )
-        }
+            ),
+        },
     },
     Classes: {
         screen: ClassesStack,
@@ -97,8 +144,8 @@ const AppStack = createBottomTabNavigator({
             tabBarLabel: 'Classes',
             tabBarIcon: ({ tintColor }) => (
                 <Ionicons name="ios-albums" color={tintColor} size={24} />
-            )
-        }
+            ),
+        },
     },
     Profile: {
         screen: ProfileStack,
