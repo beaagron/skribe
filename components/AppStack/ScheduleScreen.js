@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import CalendarStrip from 'react-native-calendar-strip';
+import moment from 'moment';
 import TaskCard from '../TaskCard';
 
 export default class ScheduleScreen extends Component {
@@ -23,13 +24,24 @@ export default class ScheduleScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: {}
+            currentDate: new Date(),
+            markedDate: moment(new Date()).format("YYYY-MM-DD"),
+            // advDays: 0
         };
     }
+
+    // NextDay(numDays){
+    //     this.setState({
+    //         advDays: moment(this.state.currentDate).add(numDays, 'days').format("MMMM D")
+    //     })
+    // }
 
     render() {
 
         const { navigate } = this.props.navigation;
+        const today = this.state.currentDate;
+        const day = moment(today).format("dddd");
+        const date = moment(today).format("MMMM D");
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -46,9 +58,9 @@ export default class ScheduleScreen extends Component {
 
                             />
                         </View>
-                        <TouchableOpacity 
-                        style={styles.newButtonContainer}
-                        onPress={() => navigate('NewTask')}
+                        <TouchableOpacity
+                            style={styles.newButtonContainer}
+                            onPress={() => navigate('NewTask')}
                         >
                             <Ionicons name="ios-add" size={40} color="grey" />
                         </TouchableOpacity>
@@ -70,7 +82,7 @@ export default class ScheduleScreen extends Component {
                             <ScrollView
                                 showsVerticalScrollIndicator={false}
                             >
-                                <Text style={styles.date}>Today · April 10</Text>
+                                <Text style={styles.date}>Today · {date}</Text>
                                 <TaskCard
                                     taskName="Process 2336 Notes"
                                     classColor="#E8384F"
@@ -79,7 +91,7 @@ export default class ScheduleScreen extends Component {
                                     taskName="Read Chapter 13"
                                     classColor="#4186E0"
                                 />
-                                <Text style={styles.date}>Tomorrow · April 11</Text>
+                                <Text style={styles.date}>Tomorrow · {moment(today).add(1, 'days').format("MMMM D")}</Text>
                                 <TaskCard
                                     taskName="Finish HW 25"
                                     classColor="#FD612C"
@@ -88,7 +100,7 @@ export default class ScheduleScreen extends Component {
                                     taskName="Finish Math OHW"
                                     classColor="#62D26F"
                                 />
-                                <Text style={styles.date}>Fri, April 12</Text>
+                                <Text style={styles.date}>{moment(today).add(2, 'days').format("dddd")}, {moment(today).add(2, 'days').format("MMMM D")}</Text>
                                 <TaskCard
                                     taskName="Finish HW 17"
                                     classColor="#A4CF30"
